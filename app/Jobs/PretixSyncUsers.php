@@ -55,7 +55,8 @@ class PretixSyncUsers implements ShouldQueue
                         $name = $position['attendee_name'];
 
                         foreach ($position['answers'] as $answer) {
-                            if ($answer['question'] == 77) {
+                            if ($answer['question_identifier'] == "BUG3A3RH") {
+                                dump($answer);
                                 $email = $answer['answer'];
                             }
                         }

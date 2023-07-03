@@ -94,7 +94,7 @@ class PretixTest extends TestCase
         $job->handle($pretix);
 
         $this->assertDatabaseHas('users', [
-            'email' => 'podstockiannerin@example.net',
+            'email' => 'podstockianner@example.net',
             'id' => 1,
             'pretixid' => $code . '-23442',
         ]);

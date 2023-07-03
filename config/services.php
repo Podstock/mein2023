@@ -31,4 +31,12 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'pretix' => [
+        'token' => env('PRETIX_TOKEN')
+    ],
+
+    'pretalx' => [
+        'token' => env('PRETALX_TOKEN')
+    ]
+
 ];
