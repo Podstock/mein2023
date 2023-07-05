@@ -61,6 +61,16 @@ class User extends Authenticatable
         'avatar_tiny',
     ];
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function hasRole($role)
+    {
+        return in_array($role, $this->roles->pluck('name')->toArray());
+    }
+
     protected function defaultProfilePhotoUrl()
     {
         return "/avatar.png";
