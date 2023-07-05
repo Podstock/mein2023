@@ -4,6 +4,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
+use App\Models\Chat;
+use App\Events\ChatSent;
+use App\Http\Resources\Chat as ChatResource;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -46,4 +49,23 @@ Route::middleware([
     Route::get('/', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+
+    /* Chats */
+    Route::get('/chats', function () {
+        return ChatResource::collection(Chat::with('user')->get());
+    });
+
+    Route::post('/chats', function () {
+        $message = request()->message;
+        if (empty($message))
+            return abort(400);
+        $chat = new Chat;
+        $chat->content = request()->message;
+        $chat->user_id = auth()->user()->id;
+        $chat->save();
+
+        event(new ChatSent(new ChatResource($chat)));
+    });
+
 });
