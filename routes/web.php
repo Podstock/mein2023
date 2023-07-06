@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\DrivingServiceController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
@@ -66,6 +67,12 @@ Route::middleware([
     Route::get('/chats', function () {
         return ChatResource::collection(Chat::with('user')->get());
     });
+
+    /* Project Routes */
+    Route::get('/projects', [ProjectController::class, 'index']);
+    Route::post('/projects', [ProjectController::class, 'store']);
+    Route::put('/projects/{project}', [ProjectController::class, 'update']);
+    Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
 
     /* Fahrdienst */
     Route::get('/driving_services', [DrivingServiceController::class, 'index'])->name("drivings");

@@ -78,11 +78,11 @@ const clearPhotoFileInput = () => {
 <template>
     <FormSection @submitted="updateProfileInformation">
         <template #title>
-            Profile Information
+            Profil Informationen
         </template>
 
         <template #description>
-            Update your account's profile information and email address.
+            Aktualisiere dein Profil
         </template>
 
         <template #form>
@@ -96,7 +96,7 @@ const clearPhotoFileInput = () => {
                     @change="updatePhotoPreview"
                 >
 
-                <InputLabel for="photo" value="Photo" />
+                <InputLabel for="photo" value="Foto" />
 
                 <!-- Current Profile Photo -->
                 <div v-show="! photoPreview" class="mt-2">
@@ -112,7 +112,7 @@ const clearPhotoFileInput = () => {
                 </div>
 
                 <SecondaryButton class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">
-                    Select A New Photo
+                Neues Profil Foto
                 </SecondaryButton>
 
                 <SecondaryButton
@@ -121,7 +121,7 @@ const clearPhotoFileInput = () => {
                     class="mt-2"
                     @click.prevent="deletePhoto"
                 >
-                    Remove Photo
+                    Lösche Foto
                 </SecondaryButton>
 
                 <InputError :message="form.errors.photo" class="mt-2" />
@@ -172,6 +172,21 @@ const clearPhotoFileInput = () => {
                     </div>
                 </div>
             </div>
+
+            <!-- Mastodon -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="mastodon" value="Mastodon Link" />
+                <TextInput id="mastodon" v-model="form.mastodon" type="text" class="mt-1 block w-full" />
+                <InputError :message="form.errors.mastodon" class="mt-2" />
+            </div>
+
+            <!-- Sendegate -->
+            <div class="col-span-6 sm:col-span-4">
+                <InputLabel for="sendegate" value="Sendegate Username" />
+                <TextInput id="sendegate" v-model="form.sendegate" type="text" class="mt-1 block w-full" />
+                <InputError :message="form.errors.sendegate" class="mt-2" />
+            </div>
+
         </template>
 
         <template #actions>
