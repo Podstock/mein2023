@@ -58,6 +58,9 @@ const logout = () => {
                                 <NavLink :href="route('boardentries')" :active="route().current('boardentries')">
                                    Pinnwand
                                 </NavLink>
+                                <NavLink :href="route('users')" :active="route().current('users')">
+                                  Teilnehmer*innen
+                                </NavLink>
                             </div>
                         </div>
 
@@ -135,6 +138,9 @@ const logout = () => {
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('boardentries')" :active="route().current('boardentries')">
                             Pinnwand
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('users')" :active="route().current('users')">
+                            Teilnehmer*innen
                         </ResponsiveNavLink>
                     </div>
 

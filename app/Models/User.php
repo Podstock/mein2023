@@ -61,6 +61,11 @@ class User extends Authenticatable
         'avatar_tiny',
     ];
 
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();

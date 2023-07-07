@@ -11,6 +11,7 @@ use App\Models\Boardentry;
 use App\Events\ChatSent;
 use App\Http\Resources\Chat as ChatResource;
 use App\Http\Resources\Boardentry as BoardentryResource;
+use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -116,6 +117,19 @@ Route::middleware([
         Gate::authorize('delete', $boardentry);
         $boardentry->delete();
         return redirect()->back();
+    });
+
+    /* Teilnehmer*innen */
+    Route::get(
+        '/users',
+        function () {
+            $users = User::with('projects')->orderBy('name')->get();
+            return inertia('Users/Index', ['users' => UserResource::collection($users)]);
+        }
+    )->name("users");
+
+    Route::get('/user/{user}', function (User $user) {
+        return inertia('Users/user', ['vuser' => new UserResource($user)]);
     });
 
 });
