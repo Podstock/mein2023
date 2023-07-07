@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Models\Chat;
+use App\Models\Boardentry;
 use App\Events\ChatSent;
 use App\Http\Resources\Chat as ChatResource;
+use App\Http\Resources\Boardentry as BoardentryResource;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,12 +65,6 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-
-    /* Chats */
-    Route::get('/chats', function () {
-        return ChatResource::collection(Chat::with('user')->get());
-    });
-
     /* Project Routes */
     Route::get('/projects', [ProjectController::class, 'index']);
     Route::post('/projects', [ProjectController::class, 'store']);
@@ -80,6 +77,11 @@ Route::middleware([
     Route::put('/driving_services/{driving_service}', [DrivingServiceController::class, 'update']);
     Route::delete('/driving_services/{driving_service}', [DrivingServiceController::class, 'destroy']);
 
+    /* Chats */
+    Route::get('/chats', function () {
+        return ChatResource::collection(Chat::with('user')->get());
+    });
+
     Route::post('/chats', function () {
         $message = request()->message;
         if (empty($message))
@@ -90,6 +92,30 @@ Route::middleware([
         $chat->save();
 
         event(new ChatSent(new ChatResource($chat)));
+    });
+
+    /* Pinnwand */
+    Route::get('/boardentries', function () {
+        return inertia('Boardentries/Index', ['boardentries' => BoardentryResource::collection(Boardentry::with('user')->get())]);
+    })->name('boardentries');
+
+    Route::post('/boardentries', function () {
+        request()->validate([
+            'content' => ['required'],
+        ]);
+
+        $chat = new Boardentry;
+        $chat->content = request()->content;
+        $chat->user_id = auth()->user()->id;
+        $chat->save();
+
+        return redirect()->back();
+    });
+
+    Route::delete('/boardentries/{boardentry}', function (Boardentry $boardentry) {
+        Gate::authorize('delete', $boardentry);
+        $boardentry->delete();
+        return redirect()->back();
     });
 
 });

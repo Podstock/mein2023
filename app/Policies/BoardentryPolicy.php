@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Bordentry;
+use App\Models\Boardentry;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class BordentryPolicy
+class BoardentryPolicy
 {
     use HandlesAuthorization;
 
@@ -32,10 +32,10 @@ class BordentryPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Bordentry  $bordentry
+     * @param  \App\Models\Boardentry  $boardentry
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Bordentry $bordentry)
+    public function view(User $user, Boardentry $boardentry)
     {
         //
     }
@@ -55,34 +55,34 @@ class BordentryPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Bordentry  $bordentry
+     * @param  \App\Models\Boardentry  $boardentry
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Bordentry $bordentry)
+    public function update(User $user, Boardentry $boardentry)
     {
-        return $user->id === $bordentry->user->id;
+        return $user->id === $boardentry->user->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Bordentry  $bordentry
+     * @param  \App\Models\Boardentry  $boardentry
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Bordentry $bordentry)
+    public function delete(User $user, Boardentry $boardentry)
     {
-        return $user->id === $bordentry->user->id;
+        return $user->id === $boardentry->user->id;
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Bordentry  $bordentry
+     * @param  \App\Models\Boardentry  $boardentry
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Bordentry $bordentry)
+    public function restore(User $user, Boardentry $boardentry)
     {
         //
     }
@@ -91,10 +91,10 @@ class BordentryPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Bordentry  $bordentry
+     * @param  \App\Models\Boardentry  $boardentry
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Bordentry $bordentry)
+    public function forceDelete(User $user, Boardentry $boardentry)
     {
         //
     }
