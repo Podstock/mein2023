@@ -76,8 +76,10 @@ class ProjectController extends Controller
         request()->validate([
             'name' => 'required',
             'url' => ['required', 'url'],
-            'logo' => ['image'],
+            'logo' => ['nullable', 'image'],
         ]);
+
+        $this->authorize('update', $project);
 
         if (request()->hasFile('logo')) {
             $path = request()->file('logo')->store('logos', 'public');
@@ -95,7 +97,6 @@ class ProjectController extends Controller
             $project->logo = $path;
         }
 
-        $this->authorize('update', $project);
         $project->name = request()->name;
         $project->url = request()->url;
         $project->save();

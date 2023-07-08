@@ -56,7 +56,7 @@ function update() {
                 id: project.id,
                 name: project.name,
                 url: project.url,
-                logo: project.logo,
+                logo: '',
                 logo_preview: project.logo
             }));
         });

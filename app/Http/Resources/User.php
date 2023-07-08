@@ -17,8 +17,8 @@ class User extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'mastodon' => $this->mastodon,
             'sendegate' => str_replace('@', '', $this->sendegate),
-            'twitter' => $this->twitter,
             'avatar' => $this->avatar,
             'search' => $this->search,
             'offer' => $this->offer,
