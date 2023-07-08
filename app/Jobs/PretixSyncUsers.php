@@ -85,7 +85,6 @@ class PretixSyncUsers implements ShouldQueue
                             $user->email = $email;
                             $user->save();
                             Mail::to($email)->queue(new MyLogin($user));
-                            return; //Test
                         }
 
                         $user->email = $email;
