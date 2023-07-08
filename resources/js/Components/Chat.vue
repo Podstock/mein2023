@@ -37,7 +37,7 @@ onMounted(() => {
         <div class="bg-white shadow sm:rounded-lg sm:overflow-hidden">
             <div class="divide-y divide-gray-200">
                 <div class="px-4 py-2 sm:px-6">
-                    <h2 id="chat-title" class="text-lg font-medium text-gray-900">Chat</h2>
+                    <h2 id="chat-title" class="text-lg font-medium text-gray-900">Interner Chat</h2>
                 </div>
                 <div id="chat" class="px-4 py-6 sm:px-6 overflow-y-scroll max-h-[40vh]">
                     <ul role="list" class="space-y-4">
