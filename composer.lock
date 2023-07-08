@@ -2183,17 +2183,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.26.3",
+            "version": "4.26.4",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "4a4f4a548a9abe04934414212e484b27cf9860ec"
+                "reference": "2c85439aa38f1aecf396b5fa473fa0f8dbd813f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-4a4f4a548a9abe04934414212e484b27cf9860ec-zip-4c1a82.zip",
-                "reference": "4a4f4a548a9abe04934414212e484b27cf9860ec",
-                "shasum": "837efb43c116f89da00ab5df40d5a6a571477a58"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-2c85439aa38f1aecf396b5fa473fa0f8dbd813f7-zip-f99a68.zip",
+                "reference": "2c85439aa38f1aecf396b5fa473fa0f8dbd813f7",
+                "shasum": "9a150d8c7b62c5731a1247eda8f9d1cf0ae4d490"
             },
             "require": {
                 "brick/money": "^0.5.0|^0.6.0|^0.7.0|^0.8.0",
@@ -2291,9 +2291,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.26.3"
+                "source": "https://github.com/laravel/nova/tree/v4.26.4"
             },
-            "time": "2023-06-30T04:49:39+00:00"
+            "time": "2023-07-07T19:28:00+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -9837,16 +9837,16 @@
         },
         {
             "name": "spatie/flare-client-php",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/flare-client-php.git",
-                "reference": "82138174d5fe2829a7f085a6bdb2a06f6def9f7a"
+                "reference": "943894c6a6b00501365ac0b91ae0dce56f2226fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/82138174d5fe2829a7f085a6bdb2a06f6def9f7a",
-                "reference": "82138174d5fe2829a7f085a6bdb2a06f6def9f7a",
+                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/943894c6a6b00501365ac0b91ae0dce56f2226fa",
+                "reference": "943894c6a6b00501365ac0b91ae0dce56f2226fa",
                 "shasum": ""
             },
             "require": {
@@ -9895,7 +9895,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/flare-client-php/issues",
-                "source": "https://github.com/spatie/flare-client-php/tree/1.4.0"
+                "source": "https://github.com/spatie/flare-client-php/tree/1.4.1"
             },
             "funding": [
                 {
@@ -9903,7 +9903,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-28T11:08:09+00:00"
+            "time": "2023-07-06T09:29:49+00:00"
         },
         {
             "name": "spatie/ignition",
