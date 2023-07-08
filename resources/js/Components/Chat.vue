@@ -45,7 +45,7 @@ onMounted(() => {
                             <div class="flex space-x-3">
                                 <div class="flex-shrink-0">
                                     <a :href="'/users#' + chat.user_id">
-                                    <img class="h-10 w-10 rounded-full" :src="chat.avatar" alt="">
+                                    <img class="h-10 w-10 rounded-full object-cover" :src="chat.avatar" alt="">
                                     </a>
                                 </div>
                                 <div>
@@ -64,7 +64,7 @@ onMounted(() => {
             <div class="bg-gray-50 px-4 py-6 sm:px-6">
                 <div class="flex space-x-3">
                     <div class="flex-shrink-0">
-                        <img :src="$page.props.auth.user.avatar_tiny" class="h-10 w-10 rounded-full" alt="">
+                        <img :src="$page.props.auth.user.avatar_tiny" class="h-10 w-10 rounded-full object-cover" alt="">
                     </div>
                     <div class="min-w-0 flex-1">
                         <div>
