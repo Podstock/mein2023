@@ -132,4 +132,8 @@ Route::middleware([
         return inertia('Users/user', ['vuser' => new UserResource($user)]);
     });
 
+    /* Fahrplan */
+    Route::get('/fahrplan', function () {
+        return inertia('Pretalx');
+    })->name('fahrplan');
 });
