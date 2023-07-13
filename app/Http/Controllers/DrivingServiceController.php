@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DrivingService;
 use App\Http\Resources\DrivingService as ResourceDrivingService;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class DrivingServiceController extends Controller
@@ -15,11 +16,23 @@ class DrivingServiceController extends Controller
      */
     public function index()
     {
+        $days = new Collection();
+
+        $do = DrivingService::with('user')->where('day', 'like', 'Anreise Do%')->orderBy('time', 'asc')->get();
+        $fr = DrivingService::with('user')->where('day', 'like', 'Anreise Fr%')->orderBy('time', 'asc')->get();
+        $so = DrivingService::with('user')->where('day', 'like', 'Abreise So%')->orderBy('time', 'asc')->get();
+        $mo = DrivingService::with('user')->where('day', 'like', 'Abreise Mo%')->orderBy('time', 'asc')->get();
+
+        $days = $days->merge($do);
+        $days = $days->merge($fr);
+        $days = $days->merge($so);
+        $days = $days->merge($mo);
+
         return inertia(
             'DrivingService/Index',
             [
                 'drivings' => ResourceDrivingService::collection(
-                    DrivingService::with('user')->orderBy('day', 'desc')->get()
+                    $days
                 )
             ]
         );
