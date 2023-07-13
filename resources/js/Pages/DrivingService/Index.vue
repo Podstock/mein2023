@@ -31,6 +31,7 @@ let deleteDriver = (id) => {
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Fahrdienst
             </h2>
+            Bei Fragen oder Problemen, sind wir unter folgender Rufnummer erreichbar: <a href="tel:+4957763930001">05776-3930001</a>
         </template>
 
         <div class="max-w-7xl mx-auto pt-4 px-1 sm:px-4 lg:px-8">
