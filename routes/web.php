@@ -54,6 +54,11 @@ Route::get('/site.webmanifest', function () {
     return view('manifest');
 });
 
+/* Live */
+Route::get('/live', function () {
+    return inertia('Live');
+})->name('live');
+
 
 /* --- auth routes --- */
 
