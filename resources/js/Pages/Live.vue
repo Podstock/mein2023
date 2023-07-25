@@ -6,23 +6,19 @@ import videojs from "video.js";
 import "video.js/dist/video-js.css";
 
 const video = ref(true);
-const room = ref("aussen");
+const room = ref("hls/aussen");
 let player;
 const videoPlayer = ref();
 
-function innen() {
-    room.value = "innen";
-    refresh_sources();
-}
-function aussen() {
-    room.value = "aussen";
+function room_switch(value) {
+    room.value = value;
     refresh_sources();
 }
 
 function refresh_sources() {
     if (video.value) {
         player.src({
-            src: "https://live.podstock.de/hls/" + room.value + ".m3u8",
+            src: "https://live.podstock.de/" + room.value + ".m3u8",
             type: "application/x-mpegURL",
         });
     } else {
@@ -77,51 +73,54 @@ onMounted(() => {
                 <div class="flex justify-between items-center mx-auto mt-4">
                     <div>
                         <CustomButton
-                            @click="aussen()"
+                            @click="room_switch('hls/aussen')"
                             :class="{
                                 'bg-lime-700 text-white hover:bg-lime-600':
-                                    room == 'aussen',
+                                    room == 'hls/aussen',
                             }"
                         >
                             Außenbühne
                         </CustomButton>
                         <CustomButton
-                            @click="innen()"
+                            @click="room_switch('hls/innen')"
                             :class="{
                                 'bg-lime-700 text-white hover:bg-lime-600':
-                                    room == 'innen',
+                                    room == 'hls/innen',
                             }"
                         >
                             Innenbühne
                         </CustomButton>
                     </div>
-                    <div>
-                        <CustomButton
-                            @click="
-                                video = true;
-                                refresh_sources();
-                            "
-                            :class="{
-                                'bg-lime-700 text-white hover:bg-lime-600':
-                                    video,
-                            }"
-                        >
-                            Video
-                        </CustomButton>
-                        <CustomButton
-                            @click="
-                                video = false;
-                                refresh_sources();
-                            "
-                            :class="{
-                                'bg-lime-700 text-white hover:bg-lime-600':
-                                    !video,
-                            }"
-                        >
-                            Audio
-                        </CustomButton>
-                    </div>
                 </div>
+                <h2 class="border-t mt-4 py-4 font-bold">Re-Live</h2>
+                <CustomButton
+                    @click="room_switch('hls_opening/aussen')"
+                    :class="{
+                        'bg-lime-700 text-white hover:bg-lime-600':
+                            room == 'hls_opening/aussen',
+                    }"
+                >
+                    Opening
+                </CustomButton>
+
+                <CustomButton
+                    @click="room_switch('hls_slam/aussen')"
+                    :class="{
+                        'bg-lime-700 text-white hover:bg-lime-600':
+                            room == 'hls_slam/aussen',
+                    }"
+                >
+                    Podetry Slam
+                </CustomButton>
+                <CustomButton
+                    @click="room_switch('hls/aussen')"
+                    :class="{
+                        'bg-lime-700 text-white hover:bg-lime-600':
+                            room == 'hls/aussen',
+                    }"
+                >
+                    Closing
+                </CustomButton>
             </div>
         </div>
     </AppLayout>
