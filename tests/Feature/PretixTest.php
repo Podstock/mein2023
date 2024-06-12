@@ -19,7 +19,7 @@ class PretixTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function pretix_job_can_sync_events()
+    public function pretix_job_can_sync_events(): void
     {
         $json = file_get_contents(base_path().'/tests/PretixJsons/events.json');
         $json_update = '{
@@ -55,7 +55,7 @@ class PretixTest extends TestCase
     }
 
     /** @test */
-    public function pretix_job_can_sync_users()
+    public function pretix_job_can_sync_users(): void
     {
         $this->withoutExceptionHandling();
         Mail::fake();
@@ -102,7 +102,7 @@ class PretixTest extends TestCase
     }
 
     /** @test **/
-    public function pretix_job_notify_users_with_duplicate_emails()
+    public function pretix_job_notify_users_with_duplicate_emails(): void
     {
         Mail::fake();
         $this->withoutExceptionHandling();

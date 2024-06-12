@@ -22,7 +22,7 @@ class ProjectPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         //
     }
@@ -32,7 +32,7 @@ class ProjectPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Project $project)
+    public function view(User $user, Project $project): bool
     {
         //
     }
@@ -42,7 +42,7 @@ class ProjectPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         //
     }
@@ -52,7 +52,7 @@ class ProjectPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Project $project)
+    public function update(User $user, Project $project): bool
     {
         return $user->id === $project->user->id;
     }
@@ -62,7 +62,7 @@ class ProjectPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Project $project)
+    public function delete(User $user, Project $project): bool
     {
         return $user->id === $project->user->id;
     }
@@ -72,7 +72,7 @@ class ProjectPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Project $project)
+    public function restore(User $user, Project $project): bool
     {
         //
     }
@@ -82,7 +82,7 @@ class ProjectPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Project $project)
+    public function forceDelete(User $user, Project $project): bool
     {
         //
     }

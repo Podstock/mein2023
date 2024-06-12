@@ -39,7 +39,7 @@ class PretixSyncUsers implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Pretix $pretix)
+    public function handle(Pretix $pretix): void
     {
         $events = Event::all();
         $emails = [];

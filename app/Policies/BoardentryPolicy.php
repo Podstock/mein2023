@@ -22,7 +22,7 @@ class BoardentryPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         //
     }
@@ -32,7 +32,7 @@ class BoardentryPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Boardentry $boardentry)
+    public function view(User $user, Boardentry $boardentry): bool
     {
         //
     }
@@ -42,7 +42,7 @@ class BoardentryPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         //
     }
@@ -52,7 +52,7 @@ class BoardentryPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Boardentry $boardentry)
+    public function update(User $user, Boardentry $boardentry): bool
     {
         return $user->id === $boardentry->user->id;
     }
@@ -62,7 +62,7 @@ class BoardentryPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Boardentry $boardentry)
+    public function delete(User $user, Boardentry $boardentry): bool
     {
         return $user->id === $boardentry->user->id;
     }
@@ -72,7 +72,7 @@ class BoardentryPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Boardentry $boardentry)
+    public function restore(User $user, Boardentry $boardentry): bool
     {
         //
     }
@@ -82,7 +82,7 @@ class BoardentryPolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Boardentry $boardentry)
+    public function forceDelete(User $user, Boardentry $boardentry): bool
     {
         //
     }
