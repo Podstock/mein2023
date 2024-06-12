@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -12,6 +11,7 @@ class PretixDuplicate extends Mailable
     use Queueable, SerializesModels;
 
     public $order;
+
     public $email;
 
     /**
@@ -33,6 +33,6 @@ class PretixDuplicate extends Mailable
     public function build()
     {
         return $this->markdown('emails.pretix.duplicate')
-                    ->subject('Doppelte E-Mail Adresse');
+            ->subject('Doppelte E-Mail Adresse');
     }
 }

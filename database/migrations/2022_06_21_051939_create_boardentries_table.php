@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('boardentries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("user_id");
-            $table->text("content");
+            $table->unsignedBigInteger('user_id');
+            $table->text('content');
             $table->timestamps();
         });
     }

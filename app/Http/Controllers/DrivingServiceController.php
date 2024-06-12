@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DrivingService;
 use App\Http\Resources\DrivingService as ResourceDrivingService;
+use App\Models\DrivingService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
@@ -33,16 +33,14 @@ class DrivingServiceController extends Controller
             [
                 'drivings' => ResourceDrivingService::collection(
                     $days
-                )
+                ),
             ]
         );
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -62,12 +60,9 @@ class DrivingServiceController extends Controller
         return redirect()->back();
     }
 
-
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DrivingService  $drivingService
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, DrivingService $drivingService)
@@ -78,13 +73,13 @@ class DrivingServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DrivingService  $drivingService
      * @return \Illuminate\Http\Response
      */
     public function destroy(DrivingService $drivingService)
     {
         $this->authorize('delete', $drivingService);
         $drivingService->delete();
+
         return redirect()->back();
     }
 }

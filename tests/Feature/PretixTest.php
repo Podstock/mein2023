@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
-use App\Models\Event;
 use App\Jobs\PretixSyncEvents;
 use App\Jobs\PretixSyncUsers;
 use App\Mail\MyLogin;
 use App\Mail\PretixDuplicate;
+use App\Models\Event;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
@@ -21,7 +21,7 @@ class PretixTest extends TestCase
     /** @test */
     public function pretix_job_can_sync_events()
     {
-        $json = file_get_contents(base_path() . '/tests/PretixJsons/events.json');
+        $json = file_get_contents(base_path().'/tests/PretixJsons/events.json');
         $json_update = '{
             "count": 1,
             "next": null,
@@ -54,16 +54,15 @@ class PretixTest extends TestCase
         $this->assertDatabaseHas('events', ['name' => 'Podstock 2019 - Cooles Event', 'slug' => '2019']);
     }
 
-
     /** @test */
     public function pretix_job_can_sync_users()
     {
         $this->withoutExceptionHandling();
         Mail::fake();
 
-        $json = file_get_contents(base_path() . '/tests/PretixJsons/order_example.json');
-        $json_page2 = file_get_contents(base_path() . '/tests/PretixJsons/order_example_page2.json');
-        $json_update = file_get_contents(base_path() . '/tests/PretixJsons/order_example_update.json');
+        $json = file_get_contents(base_path().'/tests/PretixJsons/order_example.json');
+        $json_page2 = file_get_contents(base_path().'/tests/PretixJsons/order_example_page2.json');
+        $json_update = file_get_contents(base_path().'/tests/PretixJsons/order_example_update.json');
 
         $mock = new MockHandler([
             new Response(200, [], $json),
@@ -96,7 +95,7 @@ class PretixTest extends TestCase
         $this->assertDatabaseHas('users', [
             'email' => 'podstockianner@example.net',
             'id' => 1,
-            'pretixid' => $code . '-23442',
+            'pretixid' => $code.'-23442',
         ]);
 
         Mail::assertNotSent(PretixDuplicate::class);
@@ -107,7 +106,7 @@ class PretixTest extends TestCase
     {
         Mail::fake();
         $this->withoutExceptionHandling();
-        $json = file_get_contents(base_path() . '/tests/PretixJsons/order_duplicate_email_position.json');
+        $json = file_get_contents(base_path().'/tests/PretixJsons/order_duplicate_email_position.json');
 
         $mock = new MockHandler([
             new Response(200, [], $json),

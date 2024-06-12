@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Event;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
@@ -13,7 +12,7 @@ class Pretix
 
     public function __construct($handler = null)
     {
-        if (!$handler) {
+        if (! $handler) {
             $handler = new CurlHandler();
         }
 
