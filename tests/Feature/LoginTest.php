@@ -11,13 +11,13 @@ class LoginTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function redirect_guest_users_to_login()
+    public function redirect_guest_users_to_login(): void
     {
         $this->get('/')->assertRedirect('/pretix/login');
     }
 
     /** @test */
-    public function guest_users_see_login_page()
+    public function guest_users_see_login_page(): void
     {
         $this->withoutExceptionHandling();
         $response = $this->get('/pretix/login');
@@ -25,7 +25,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function user_can_login_with_pretix_secret()
+    public function user_can_login_with_pretix_secret(): void
     {
         $user = User::factory()->create(['token' => 'secrettoken']);
 
@@ -36,7 +36,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function user_login_fail_with_wrong_pretix_secret()
+    public function user_login_fail_with_wrong_pretix_secret(): void
     {
         User::factory()->create();
 

@@ -22,7 +22,7 @@ class DrivingServicePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         //
     }
@@ -32,7 +32,7 @@ class DrivingServicePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, DrivingService $drivingService)
+    public function view(User $user, DrivingService $drivingService): bool
     {
         //
     }
@@ -42,7 +42,7 @@ class DrivingServicePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         //
     }
@@ -52,7 +52,7 @@ class DrivingServicePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, DrivingService $drivingService)
+    public function update(User $user, DrivingService $drivingService): bool
     {
         //
     }
@@ -62,7 +62,7 @@ class DrivingServicePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, DrivingService $drivingService)
+    public function delete(User $user, DrivingService $drivingService): bool
     {
         return $user->id === $drivingService->user->id;
     }
@@ -72,7 +72,7 @@ class DrivingServicePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, DrivingService $drivingService)
+    public function restore(User $user, DrivingService $drivingService): bool
     {
         //
     }
@@ -82,7 +82,7 @@ class DrivingServicePolicy
      *
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, DrivingService $drivingService)
+    public function forceDelete(User $user, DrivingService $drivingService): bool
     {
         //
     }
