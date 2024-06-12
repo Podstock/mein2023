@@ -29,11 +29,10 @@ class Project extends Model
 
     public function myurl()
     {
-        if (!preg_match("/^http(s){0,1}\:\/\//", $this->url)) {
+        if (! preg_match("/^http(s){0,1}\:\/\//", $this->url)) {
             return 'https://'.$this->url;
         }
 
         return $this->url;
     }
-
 }

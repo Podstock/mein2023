@@ -1,19 +1,19 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Events\ChatSent;
 use App\Http\Controllers\DrivingServiceController;
 use App\Http\Controllers\ProjectController;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Models\User;
-use App\Models\Chat;
-use App\Models\Boardentry;
-use App\Events\ChatSent;
-use App\Http\Resources\Chat as ChatResource;
 use App\Http\Resources\Boardentry as BoardentryResource;
+use App\Http\Resources\Chat as ChatResource;
 use App\Http\Resources\User as UserResource;
+use App\Models\Boardentry;
+use App\Models\Chat;
+use App\Models\User;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,6 @@ use Illuminate\Support\Facades\Gate;
 Route::get('/pretix/login', function () {
     return Inertia::render('PretixLogin');
 })->name('pretix');
-
 
 Route::get('/pretix/login/{token}', function ($token) {
     if (empty($token)) {
@@ -59,7 +58,6 @@ Route::get('/live', function () {
     return inertia('Live');
 })->name('live');
 
-
 /* --- auth routes --- */
 
 Route::middleware([
@@ -78,7 +76,7 @@ Route::middleware([
     Route::delete('/projects/{project}', [ProjectController::class, 'destroy']);
 
     /* Fahrdienst */
-    Route::get('/driving_services', [DrivingServiceController::class, 'index'])->name("drivings");
+    Route::get('/driving_services', [DrivingServiceController::class, 'index'])->name('drivings');
     Route::post('/driving_services', [DrivingServiceController::class, 'store']);
     Route::put('/driving_services/{driving_service}', [DrivingServiceController::class, 'update']);
     Route::delete('/driving_services/{driving_service}', [DrivingServiceController::class, 'destroy']);
@@ -90,8 +88,9 @@ Route::middleware([
 
     Route::post('/chats', function () {
         $message = request()->message;
-        if (empty($message))
+        if (empty($message)) {
             return abort(400);
+        }
         $chat = new Chat;
         $chat->content = request()->message;
         $chat->user_id = auth()->user()->id;
@@ -121,6 +120,7 @@ Route::middleware([
     Route::delete('/boardentries/{boardentry}', function (Boardentry $boardentry) {
         Gate::authorize('delete', $boardentry);
         $boardentry->delete();
+
         return redirect()->back();
     });
 
@@ -129,9 +129,10 @@ Route::middleware([
         '/users',
         function () {
             $users = User::with('projects')->orderBy('name')->get();
+
             return inertia('Users/Index', ['users' => UserResource::collection($users)]);
         }
-    )->name("users");
+    )->name('users');
 
     Route::get('/user/{user}', function (User $user) {
         return inertia('Users/user', ['vuser' => new UserResource($user)]);

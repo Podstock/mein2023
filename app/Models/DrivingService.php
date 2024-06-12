@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DrivingService extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'day', 'time',
     ];

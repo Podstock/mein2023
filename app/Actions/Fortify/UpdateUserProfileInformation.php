@@ -3,11 +3,11 @@
 namespace App\Actions\Fortify;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Storage;
+use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
@@ -15,7 +15,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      * Validate and update the given user's profile information.
      *
      * @param  mixed  $user
-     * @param  array  $input
      * @return void
      */
     public function update($user, array $input)
@@ -31,22 +30,22 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         if (isset($input['photo'])) {
             $path = request()->file('photo')->store('logos', 'public');
 
-            Storage::disk('public')->copy($path, 'big/' . $path);
-            $img = Image::make(storage_path('app/public/big/' . $path));
+            Storage::disk('public')->copy($path, 'big/'.$path);
+            $img = Image::make(storage_path('app/public/big/'.$path));
             $img->resize(512, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save();
 
-            Storage::disk('public')->copy($path, 'small/' . $path);
-            $img = Image::make(storage_path('app/public/small/' . $path));
+            Storage::disk('public')->copy($path, 'small/'.$path);
+            $img = Image::make(storage_path('app/public/small/'.$path));
             $img->resize(256, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save();
 
-            Storage::disk('public')->copy($path, 'tiny/' . $path);
-            $img = Image::make(storage_path('app/public/tiny/' . $path));
+            Storage::disk('public')->copy($path, 'tiny/'.$path);
+            $img = Image::make(storage_path('app/public/tiny/'.$path));
             $img->resize(64, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
@@ -74,7 +73,6 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      * Update the given verified user's profile information.
      *
      * @param  mixed  $user
-     * @param  array  $input
      * @return void
      */
     protected function updateVerifiedUser($user, array $input)

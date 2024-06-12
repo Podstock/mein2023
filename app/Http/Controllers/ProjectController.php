@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Project as ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-
+use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -19,6 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::where(['user_id' => auth()->user()->id])->get();
+
         return ProjectResource::collection(
             $projects
         );
@@ -27,7 +27,6 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -45,13 +44,13 @@ class ProjectController extends Controller
 
         $path = request()->file('file')->store('logos', 'public');
 
-        Storage::disk('public')->copy($path, 'small/' . $path);
-        $img = Image::make(storage_path('app/public/small/' . $path));
+        Storage::disk('public')->copy($path, 'small/'.$path);
+        $img = Image::make(storage_path('app/public/small/'.$path));
         $img->resize(256, 256);
         $img->save();
 
-        Storage::disk('public')->copy($path, 'tiny/' . $path);
-        $img = Image::make(storage_path('app/public/tiny/' . $path));
+        Storage::disk('public')->copy($path, 'tiny/'.$path);
+        $img = Image::make(storage_path('app/public/tiny/'.$path));
         $img->resize(64, 64);
         $img->save();
 
@@ -67,8 +66,6 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Project $project)
@@ -84,13 +81,13 @@ class ProjectController extends Controller
         if (request()->hasFile('logo')) {
             $path = request()->file('logo')->store('logos', 'public');
 
-            Storage::disk('public')->copy($path, 'small/' . $path);
-            $img = Image::make(storage_path('app/public/small/' . $path));
+            Storage::disk('public')->copy($path, 'small/'.$path);
+            $img = Image::make(storage_path('app/public/small/'.$path));
             $img->resize(256, 256);
             $img->save();
 
-            Storage::disk('public')->copy($path, 'tiny/' . $path);
-            $img = Image::make(storage_path('app/public/tiny/' . $path));
+            Storage::disk('public')->copy($path, 'tiny/'.$path);
+            $img = Image::make(storage_path('app/public/tiny/'.$path));
             $img->resize(64, 64);
             $img->save();
 
@@ -107,7 +104,6 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)

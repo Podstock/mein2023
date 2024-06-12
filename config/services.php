@@ -32,11 +32,11 @@ return [
     ],
 
     'pretix' => [
-        'token' => env('PRETIX_TOKEN')
+        'token' => env('PRETIX_TOKEN'),
     ],
 
     'pretalx' => [
-        'token' => env('PRETALX_TOKEN')
-    ]
+        'token' => env('PRETALX_TOKEN'),
+    ],
 
 ];
