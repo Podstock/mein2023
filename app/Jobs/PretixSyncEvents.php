@@ -25,8 +25,6 @@ class PretixSyncEvents implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
     public function handle(Pretix $pretix): void
     {
