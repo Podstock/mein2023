@@ -51,10 +51,6 @@ const logout = () => {
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
-
-                                <NavLink :href="route('drivings')" :active="route().current('drivings')">
-                                    Fahrdienst
-                                </NavLink>
                                 <NavLink :href="route('boardentries')" :active="route().current('boardentries')">
                                    Pinnwand
                                 </NavLink>
@@ -135,9 +131,6 @@ const logout = () => {
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink :href="route('drivings')" :active="route().current('drivings')">
-                            Fahrdienst
                         </ResponsiveNavLink>
                         <ResponsiveNavLink :href="route('boardentries')" :active="route().current('boardentries')">
                             Pinnwand
