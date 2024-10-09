@@ -20,7 +20,7 @@ class Pretix
 
         $stack = HandlerStack::create($handler);
         $this->client = new Client([
-            'base_uri' => 'https://tickets.podstock.de/api/v1/',
+            'base_uri' => 'https://pretix.eu/api/v1/',
             'handler' => $stack,
             'headers' => [
                 'Authorization' => "Token $authtoken",
