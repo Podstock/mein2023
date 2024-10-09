@@ -23,7 +23,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'photo' => ['nullable', 'mimes:jpg,jpeg,png', 'max:4096'],
-            'mastodon' => ['nullable', 'url'],
+            'mastodon' => ['nullable', 'string'],
             'sendegate' => ['nullable', 'string'],
         ])->validateWithBag('updateProfileInformation');
 
