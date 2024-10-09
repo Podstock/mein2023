@@ -46,12 +46,12 @@ class ProjectController extends Controller
 
         Storage::disk('public')->copy($path, 'small/'.$path);
         $img = Image::read(storage_path('app/public/small/'.$path));
-        $img->resize(256, 256);
+        $img->scale(height: 256);
         $img->save();
 
         Storage::disk('public')->copy($path, 'tiny/'.$path);
         $img = Image::read(storage_path('app/public/tiny/'.$path));
-        $img->resize(64, 64);
+        $img->scale(height: 64);
         $img->save();
 
         $project->logo = $path;

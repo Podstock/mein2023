@@ -32,23 +32,17 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 
             Storage::disk('public')->copy($path, 'big/'.$path);
             $img = Image::read(storage_path('app/public/big/'.$path));
-            $img->resize(512, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $img->scale(height: 512);
             $img->save();
 
             Storage::disk('public')->copy($path, 'small/'.$path);
             $img = Image::read(storage_path('app/public/small/'.$path));
-            $img->resize(256, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $img->scale(height: 256);
             $img->save();
 
             Storage::disk('public')->copy($path, 'tiny/'.$path);
             $img = Image::read(storage_path('app/public/tiny/'.$path));
-            $img->resize(64, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
+            $img->scale(height: 64);
             $img->save();
 
             $user->updateProfilePhoto($input['photo']);
