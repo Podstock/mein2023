@@ -37,14 +37,14 @@ class Pretix
 
     public function orders(Event $event)
     {
-        $url = "organizers/podstock/events/{$event->slug}/orders/";
+        $url = "organizers/metaebene/events/{$event->slug}/orders/";
 
         return $this->request($url);
     }
 
     public function position(Event $event, $id)
     {
-        $url = "organizers/podstock/events/{$event->slug}/orderpositions/$id/";
+        $url = "organizers/metaebene/events/{$event->slug}/orderpositions/$id/";
 
         return $this->request($url);
     }
