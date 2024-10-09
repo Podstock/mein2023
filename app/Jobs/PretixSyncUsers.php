@@ -77,7 +77,7 @@ class PretixSyncUsers implements ShouldQueue
                         }
 
                         if (in_array($email, $emails)) {
-                            Mail::to($order['email'])->queue(new PretixDuplicate($order, $email));
+                            //Mail::to($order['email'])->queue(new PretixDuplicate($order, $email));
 
                             continue;
                         }
@@ -94,7 +94,7 @@ class PretixSyncUsers implements ShouldQueue
                             $user->sendegate = $sendegate;
                             $user->mastodon = $mastodon;
                             $user->save();
-                            Mail::to($email)->queue(new MyLogin($user));
+                            //Mail::to($email)->queue(new MyLogin($user));
                         }
 
                         $user->email = $email;
