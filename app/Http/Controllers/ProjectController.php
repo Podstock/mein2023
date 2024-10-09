@@ -6,7 +6,7 @@ use App\Http\Resources\Project as ProjectResource;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ProjectController extends Controller
 {
