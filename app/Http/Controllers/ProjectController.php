@@ -45,12 +45,12 @@ class ProjectController extends Controller
         $path = request()->file('file')->store('logos', 'public');
 
         Storage::disk('public')->copy($path, 'small/'.$path);
-        $img = Image::make(storage_path('app/public/small/'.$path));
+        $img = Image::read(storage_path('app/public/small/'.$path));
         $img->resize(256, 256);
         $img->save();
 
         Storage::disk('public')->copy($path, 'tiny/'.$path);
-        $img = Image::make(storage_path('app/public/tiny/'.$path));
+        $img = Image::read(storage_path('app/public/tiny/'.$path));
         $img->resize(64, 64);
         $img->save();
 
@@ -82,12 +82,12 @@ class ProjectController extends Controller
             $path = request()->file('logo')->store('logos', 'public');
 
             Storage::disk('public')->copy($path, 'small/'.$path);
-            $img = Image::make(storage_path('app/public/small/'.$path));
+            $img = Image::read(storage_path('app/public/small/'.$path));
             $img->resize(256, 256);
             $img->save();
 
             Storage::disk('public')->copy($path, 'tiny/'.$path);
-            $img = Image::make(storage_path('app/public/tiny/'.$path));
+            $img = Image::read(storage_path('app/public/tiny/'.$path));
             $img->resize(64, 64);
             $img->save();
 

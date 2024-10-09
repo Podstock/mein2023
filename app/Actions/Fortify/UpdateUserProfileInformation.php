@@ -31,21 +31,21 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $path = request()->file('photo')->store('logos', 'public');
 
             Storage::disk('public')->copy($path, 'big/'.$path);
-            $img = Image::make(storage_path('app/public/big/'.$path));
+            $img = Image::read(storage_path('app/public/big/'.$path));
             $img->resize(512, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save();
 
             Storage::disk('public')->copy($path, 'small/'.$path);
-            $img = Image::make(storage_path('app/public/small/'.$path));
+            $img = Image::read(storage_path('app/public/small/'.$path));
             $img->resize(256, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $img->save();
 
             Storage::disk('public')->copy($path, 'tiny/'.$path);
-            $img = Image::make(storage_path('app/public/tiny/'.$path));
+            $img = Image::read(storage_path('app/public/tiny/'.$path));
             $img->resize(64, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
