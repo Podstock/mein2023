@@ -16,7 +16,7 @@ class User extends JsonResource
         $m_url = str_replace('http://', '', $this->mastodon);
         $m_url = str_replace('https://', '', $m_url);
         $m = parse_url("https://".$m_url);
-        $m_user = str_replace('@', '', $m['user']);
+        $m_user = str_replace('@', '', array_key_exists('user', $m) ? $m['user'] : '');
         $mastodon = "https://".$m['host']."/@".$m_user;
 
         return [
