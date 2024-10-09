@@ -21,7 +21,7 @@ onMounted(() => {
         </template>
 
         <div class="py-4">
-            <pretalx-schedule event-url="https://pretalx.c3voc.de/subscribe11" locale="de"
+            <pretalx-schedule event-url="https://pretalx.c3voc.de/subscribe11/" locale="de"
                 style="--pretalx-clr-primary: #3aa57c"></pretalx-schedule>
         </div>
         <ScrollTop />
