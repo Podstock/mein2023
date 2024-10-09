@@ -29,7 +29,7 @@ class ChatSent implements ShouldBroadcastNow
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn(): array
+    public function broadcastOn(): Channel
     {
         return new Channel('chat');
     }
