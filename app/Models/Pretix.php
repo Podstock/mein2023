@@ -30,7 +30,7 @@ class Pretix
 
     public function events()
     {
-        $url = 'organizers/podstock/events/';
+        $url = 'organizers/metaebene/events/';
 
         return $this->request($url);
     }

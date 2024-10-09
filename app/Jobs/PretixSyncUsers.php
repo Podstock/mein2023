@@ -55,8 +55,16 @@ class PretixSyncUsers implements ShouldQueue
                         $name = $position['attendee_name_parts']['calling_name'] ?? $position['attendee_name'];
 
                         foreach ($position['answers'] as $answer) {
+                            /*
                             if ($answer['question_identifier'] == 'BUG3A3RH') {
                                 $email = $answer['answer'];
+                            }
+                             */
+                            if ($answer['question_identifier'] == 'QSJHBNZS') {
+                                $sendegate = $answer['answer'];
+                            }
+                            if ($answer['question_identifier'] == 'FF3CKR9T') {
+                                $mastodon = $answer['answer'];
                             }
                         }
 
@@ -74,15 +82,17 @@ class PretixSyncUsers implements ShouldQueue
                             continue;
                         }
 
-                        $pretixid = $order['code'].'-'.$position['id'];
+                        $pretixid = $order['code'].'-'.$position['positionid'];
                         $user = User::where(['pretixid' => $pretixid])->first();
-                        if (! $user) {
+                        if (!$user) {
                             $user = new User;
                             $user->token = strtolower(Str::random(16));
                             $user->password = Hash::make(Str::random(32));
                             $user->name = $name;
                             $user->pretixid = $pretixid;
                             $user->email = $email;
+                            $user->sendegate = $sendegate;
+                            $user->mastodon = $mastodon;
                             $user->save();
                             Mail::to($email)->queue(new MyLogin($user));
                         }
