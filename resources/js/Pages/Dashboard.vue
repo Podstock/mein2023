@@ -30,7 +30,7 @@ import Chat from "@/Components/Chat.vue";
             style="position: absolute; height: 100%; border: none"
             class="w-full"
             scrolling="yes"
-            src="https://rstockm.github.io/mastowall/?hashtags=podstock,podstockde&server=https://mastodon.social"
+            src="https://rstockm.github.io/mastowall/?hashtags=subscribe11&server=https://mastodon.social"
         ></iframe>
     </AppLayout>
 </template>

@@ -6,7 +6,7 @@ import { onMounted } from 'vue';
 
 onMounted(() => {
     let pretalx = document.createElement('script');
-    pretalx.setAttribute('src', "https://fahrplan.podstock.de/podstock-2023/schedule/widget/v2.de.js");
+    pretalx.setAttribute('src', "https://pretalx.c3voc.de/subscribe11/schedule/widget/v2.de.js");
     document.head.appendChild(pretalx);
 });
 
@@ -21,7 +21,7 @@ onMounted(() => {
         </template>
 
         <div class="py-4">
-            <pretalx-schedule event-url="https://fahrplan.podstock.de/podstock-2023/" locale="de"
+            <pretalx-schedule event-url="https://pretalx.c3voc.de/subscribe11" locale="de"
                 style="--pretalx-clr-primary: #3aa57c"></pretalx-schedule>
         </div>
         <ScrollTop />
