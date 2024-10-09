@@ -51,7 +51,7 @@ class PretixSyncUsers implements ShouldQueue
                 }
                 foreach ($json['results'] as $order) {
                     foreach ($order['positions'] as $position) {
-                        $email = '';
+                        $email = $position['attendee_email'];
                         $name = $position['attendee_name_parts']['calling_name'] ?? $position['attendee_name'];
 
                         foreach ($position['answers'] as $answer) {
