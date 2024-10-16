@@ -1,24 +1,24 @@
 @component('mail::message')
 Hallo {{$user->name}},
 
-unter folgender Adresse kannst du dich in Mein Podstock:
+unter folgender Adresse kannst du dich in Meine Subscribe:
 
-@component('mail::button', ['url' => 'https://mein.podstock.de/pretix/login/'. $user->token ])
+@component('mail::button', ['url' => 'https://meine.subscribe.de/pretix/login/'. $user->token ])
 Einloggen
 @endcomponent
 
-Das wird dieses Jahr wieder die zentrale Anlaufstelle vom Event.
+Das wird dieses Jahr die zentrale Anlaufstelle vom Event.
 
 Aktuell sind folgenden Funktionen enthalten:
 
 - Profil- und Projektverwaltung (Unter Profile oben rechts)
-- Teilnehmer\*innen Liste
-- Fahrgemeinschaften
-- Pinnwand
 - Online Chat
+- Teilnehmer\*innen Liste
+- Pinnwand
+- Fahrplan
 
-Wir haben auch noch ein paar Funktionen mehr in Planung
-und informieren dich sobald diese freigeschaltet sind.
+Leider musst du dein Profil-Foto und deine Projekte hier
+noch einmal ergänzen, die anderen Angaben wurden schon übernommen.
 
 Noch ein Tipp:
 
@@ -35,5 +35,5 @@ ab. Dadurch hast du die Seite wie eine App direkt startbereit.
 
 Viele Grüße,
 
-Dein Podstock Orga Team
+Deine Subscribe Orga
 @endcomponent
