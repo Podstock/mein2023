@@ -13,11 +13,14 @@ class User extends JsonResource
      */
     public function toArray($request): array
     {
+        $mastodon = "";
         $m_url = str_replace('http://', '', $this->mastodon);
         $m_url = str_replace('https://', '', $m_url);
         $m = parse_url("https://".$m_url);
-        $m_user = str_replace('@', '', array_key_exists('user', $m) ? $m['user'] : '');
-        $mastodon = "https://".$m['host']."/@".$m_user;
+        if(is_array($m)) {
+            $m_user = str_replace('@', '', array_key_exists('user', $m) ? $m['user'] : '');
+            $mastodon = "https://".$m['host']."/@".$m_user;
+        }
 
         return [
             'id' => $this->id,
