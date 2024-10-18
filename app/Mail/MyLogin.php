@@ -30,6 +30,6 @@ class MyLogin extends Mailable
     public function build()
     {
         return $this->markdown('emails.login')
-            ->subject('Dein mein.podstock.de Login');
+            ->subject('Dein Subscribe Login');
     }
 }
